@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Save Humanity">
-    <script src="jsqrcode-combined.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="html5-qrcode.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $( "#scan-qr-button" ).click(function() {
-          $( "#scanner-div" ).removeClass("hide");
-          $( "#home-page-options" ).addClass("hide");
-          $('#reader').html5_qrcode(function(data){
-              $('#result').html(data);
-              $( "#reader" ).hide();
-              $( "#loading-icon" ).show();
-              $("barcode-msg").hide();
-            },
-            function(error){
-              // $('#error').html("Scanning...");
-            }, function(videoError){
-              $('#error').html("Camera error.");
-            }
-          );
-        });
-      });
-    </script>
-    <style type="text/css">
-      .center-block {
-       width:250px;
-       padding:10px;
-       background-color:#eceadc;
-       color:#ec8007
-     },
-     .loader {
-       border-top: 16px solid blue;
-       border-right: 16px solid green;
-       border-bottom: 16px solid red;
-     }
-    </style>
-    <title>Go Green</title>
-  </head>
-  <body data-spy="scroll" data-target="#navbar-example">
-    <div class="container-fluid">
-      <h1 class="text-primary text-center">WELCOME TO V-Mart</h1>
-      <div id="content">
-    <ul id="tabs" class="nav nav-tabs nav-justified-center" style="margin-left: 35%; border-bottom:0px; padding-bottom:10px" data-tabs="tabs">
-        <li class="active"><a href="#scan" data-toggle="tab">Scan</a></li>
-        <li><a href="#select" data-toggle="tab">Select</a></li>
-        <li><a href="#checkout" data-toggle="tab">Checkout</a></li>
-    </ul>
-    <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="scan">
-          <div class="hide" id="scanner-div">
-            <div class="center-block" id="reader" style="width:300px;height:250px">
-            </div>
-            <p id="barcode-msg" class="text-center">Scan your Membership Card</p>
-            <p id="result" class="text-center">
-          </div>
-          <div class="row" id="home-page-options">
-            <div class="col-xs-4">
-              <button id="scan-qr-button" class="btn btn-block btn-primary">Scan QR</button>
-            </div>
-            <div class="col-xs-4">
-              <button id="enter-email-button" class="btn btn-block btn-primary">Enter Email</button>
-            </div>
-          </div>
-        </div>
-        <div class="center-block tab-pane" id="select">
-            <h1>Orange</h1>
-            <p>orange orange orange orange orange</p>
-            <button>Blue</button>
-        </div>
-        <div class="center-block tab-pane" id="checkout">
-            <h1>Yellow</h1>
-            <p>yellow yellow yellow yellow yellow</p>
-            <button>Blue</button>
-        </div>
-    </div>
-</div>
-      <span id="error" style='color:darkred;' class="center"></span>
-    </div>
-  </body>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Save Humanity">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="master.css">
+	<style type="text/css">
+		.center-block {
+			width: 250px;
+			padding: 10px;
+			background-color: #eceadc;
+			color: #ec8007
+		}
+
+		.loader {
+			border-top: 16px solid blue;
+			border-right: 16px solid green;
+			border-bottom: 16px solid red;
+		}
+	</style>
+	<title>Go Green</title>
+</head>
+
+<body>
+	<div class="container pt-3">
+		<div class="bg-dark rounded text-light text-center p-2">
+			<h1>Go Green Portal</h1>
+		</div>
+
+		<div class="card mt-3 border-0">
+			<div class="card-header bg-light border border-dark">
+				<ul class="nav nav-pills card-header-pills nav-fill tab-list">
+					<li class="nav-item">
+						<a class="nav-link active" id="scan-tab" data-toggle="pill" href="#scan" aria-controls="scan" aria-selected="true">Scan</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" id="select-tab" data-toggle="pill" href="#select" aria-controls="select" aria-selected="true">Select</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" id="checkout-tab" data-toggle="pill" href="#checkout" aria-controls="checkout" aria-selected="true">Checkout</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body">
+
+			</div>
+		</div>
+		<div id="content">
+			<div id="my-tab-content" class="tab-content">
+				<div class="tab-pane active" id="scan">
+					<div class="hide" id="scanner-div">
+						<div class="center-block" id="reader" style="width:300px;height:250px">
+						</div>
+						<p id="barcode-msg" class="text-center">Scan your Membership Card</p>
+						<p id="result" class="text-center">
+					</div>
+					<div class="row" id="home-page-options">
+						<div class="col-xs-4">
+							<button id="scan-qr-button" class="btn btn-block btn-primary">Scan QR</button>
+						</div>
+						<div class="col-xs-4">
+							<button id="enter-email-button" class="btn btn-block btn-primary">Enter Email</button>
+						</div>
+					</div>
+				</div>
+				<div class="center-block tab-pane" id="select">
+					<h1>Orange</h1>
+					<p>orange orange orange orange orange</p>
+					<button>Blue</button>
+				</div>
+				<div class="center-block tab-pane" id="checkout">
+					<h1>Yellow</h1>
+					<p>yellow yellow yellow yellow yellow</p>
+					<button>Blue</button>
+				</div>
+			</div>
+		</div>
+		<span id="error" style='color:darkred;' class="center"></span>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="jsqrcode-combined.min.js"></script>
+	<script src="html5-qrcode.min.js"></script>
+	<script src="master.js"></script>
+</body>
+
 </html>
