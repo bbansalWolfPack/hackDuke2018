@@ -4,9 +4,9 @@ html, body {
     background-size: cover;
 }
 
-.navbar .navbar-expand-md .navbar-dark{
-	text-align: center !important;
-	float: none !important;
+.navbar .navbar-expand-md .navbar-dark {
+    text-align: center !important;
+    float: none !important;
 }
 
 .bg-dark {
@@ -15,6 +15,12 @@ html, body {
 
 .border-dark {
     border-color: #8BC34A !important;
+}
+
+.btn-dark {
+    background-color: #8BC34A !important;
+    border-color: #8BC34A !important;
+    color: #FFFFFF !important;
 }
 
 .nav-pills>li.nav-item>a {

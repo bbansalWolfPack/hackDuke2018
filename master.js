@@ -1,12 +1,12 @@
 $(document).ready(function() {
     $("#scan-qr-button").click(function() {
-        $("#scanner-div").removeClass("hide");
-        $("#home-page-options").addClass("hide");
+        $("#scanner-div").removeClass("d-none");
+        $("#home-page-options").addClass("d-none");
         $('#reader').html5_qrcode(function(data) {
                 $('#result').html(data);
-                $("#reader").hide();
-                $("#loading-icon").show();
-                $("barcode-msg").hide();
+                $("#reader").addClass("d-none");
+                $("#loading-icon").removeClass("d-none");
+                $("barcode-msg").addClass("d-none");
             },
             function(error) {
                 // $('#error').html("Scanning...");

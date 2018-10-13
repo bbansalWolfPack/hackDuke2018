@@ -30,55 +30,61 @@
 			<h1>Go Green Portal</h1>
 		</div>
 
-		<div class="card mt-3 border-0">
+		<div class="card mt-5 bg-dark p-1 border border-dark">
 			<div class="card-header bg-light border border-dark">
-				<ul class="nav nav-pills card-header-pills nav-fill tab-list">
+				<ul class="nav nav-pills card-header-pills nav-fill tab-list" id="pills">
 					<li class="nav-item">
-						<a class="nav-link active" id="scan-tab" data-toggle="pill" href="#scan" aria-controls="scan" aria-selected="true">Scan</a>
+						<a class="nav-link active" id="scan-tab" data-toggle="pill" href="#scan" aria-controls="scan" aria-selected="true"><strong>Scan</strong></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" id="select-tab" data-toggle="pill" href="#select" aria-controls="select" aria-selected="true">Select</a>
+						<a class="nav-link disabled" id="select-tab" data-toggle="pill" href="#select" aria-controls="select" aria-selected="true"><strong>Select</strong></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" id="checkout-tab" data-toggle="pill" href="#checkout" aria-controls="checkout" aria-selected="true">Checkout</a>
+						<a class="nav-link disabled" id="checkout-tab" data-toggle="pill" href="#checkout" aria-controls="checkout" aria-selected="true"><strong>Checkout</strong></a>
 					</li>
 				</ul>
 			</div>
-			<div class="card-body">
-
+			<div class="card-body bg-light border border-dark mt-1">
+				<div class="tab-content" id="pillsContent">
+					<div class="tab-pane fade show active text-center" id="scan" role="tabpanel" aria-labelledby="scan-tab">
+						<div class="row" id="home-page-options">
+							<div class="col">
+								<button id="scan-qr-button" class="btn btn-dark btn-lg btn-block"><strong>Scan QR</strong></button>
+							</div>
+							<div class="col">
+								<button id="enter-email-button" class="btn btn-dark btn-lg btn-block"><strong>Enter Email</strong></button>
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-sm-4">
+								<div class="card d-none" id="scanner-div">
+									<div class="card-body">
+										<div id="reader" style="width:300px;height:250px"></div>
+									</div>
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item">
+											<p id="barcode-msg" class="text-center"><strong>Scan your Membership Card</strong></p>
+											<p id="result" class="text-center">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<span id="error" style='color:darkred;' class="center"></span>
+					</div>
+					<div class="tab-pane fade" id="select" role="tabpanel" aria-labelledby="select-tab">
+						<h1>Orange</h1>
+						<p>orange orange orange orange orange</p>
+						<button>Blue</button>
+					</div>
+					<div class="tab-pane fade" id="checkout" role="tabpanel" aria-labelledby="checkout-tab">
+						<h1>Yellow</h1>
+						<p>yellow yellow yellow yellow yellow</p>
+						<button>Blue</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div id="content">
-			<div id="my-tab-content" class="tab-content">
-				<div class="tab-pane active" id="scan">
-					<div class="hide" id="scanner-div">
-						<div class="center-block" id="reader" style="width:300px;height:250px">
-						</div>
-						<p id="barcode-msg" class="text-center">Scan your Membership Card</p>
-						<p id="result" class="text-center">
-					</div>
-					<div class="row" id="home-page-options">
-						<div class="col-xs-4">
-							<button id="scan-qr-button" class="btn btn-block btn-primary">Scan QR</button>
-						</div>
-						<div class="col-xs-4">
-							<button id="enter-email-button" class="btn btn-block btn-primary">Enter Email</button>
-						</div>
-					</div>
-				</div>
-				<div class="center-block tab-pane" id="select">
-					<h1>Orange</h1>
-					<p>orange orange orange orange orange</p>
-					<button>Blue</button>
-				</div>
-				<div class="center-block tab-pane" id="checkout">
-					<h1>Yellow</h1>
-					<p>yellow yellow yellow yellow yellow</p>
-					<button>Blue</button>
-				</div>
-			</div>
-		</div>
-		<span id="error" style='color:darkred;' class="center"></span>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
