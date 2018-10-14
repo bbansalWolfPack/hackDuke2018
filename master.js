@@ -152,7 +152,7 @@ $(document).ready(function() {
       $('#finish-paragraph-text-message').text('Sending you an e-copy of your bill');
 
       $.ajax({
-        url: 'http://localhost:3000/updateUser',
+        url: 'https://hackduke2018serverbackup.appspot.com/updateUser',
         data: putData,
         type: 'POST',
         success: function(response) {
@@ -184,7 +184,7 @@ $(document).ready(function() {
       $('#finish-paragraph-text-message-printing').text('Printing your receipt, please wait!');
 
       $.ajax({
-        url: 'http://localhost:3000/updateUser',
+        url: 'https://hackduke2018serverbackup.appspot.com/updateUser',
         data: putData,
         type: 'POST',
         success: function(response) {
