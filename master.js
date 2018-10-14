@@ -17,13 +17,6 @@ $(document).ready(function() {
         $("#home-page-options").addClass("d-none");
         $('#reader').html5_qrcode(function(data) {
           let userEmail = data;
-          $("#scanner-div").addClass("d-none");
-          $( "#scan-tab" ).removeClass("active");
-          $( "#scan-tab" ).addClass("disabled");
-          $( "#select-tab" ).removeClass("disabled");
-          $('#select-tab a[href="#select"]').tab('show');
-          $('#select-tab').click();
-          putData.userEmail =  userEmail;
           $.ajax({
             url: "https://hackduke2018serverbackup.appspot.com/userDetails",
             type: "get",
@@ -31,27 +24,40 @@ $(document).ready(function() {
               userEmail
             },
             success: function(response) {
-              putData.firstName = response.firstName;
-              putData.oldScore = response.goGreenScore;
-              currentUserData = {
-                "currentScore": response.goGreenScore,
-                "currentTotalVisits": response.totalVisits,
-                "currentEBillVisits": response.eBillVisits
+              console.log(response);
+              if (response) {
+                $("#scanner-div").addClass("d-none");
+                $( "#scan-tab" ).removeClass("active");
+                $( "#scan-tab" ).addClass("disabled");
+                $( "#select-tab" ).removeClass("disabled");
+                $('#select-tab a[href="#select"]').tab('show');
+                $('#select-tab').click();
+                putData.userEmail =  userEmail;
+                putData.firstName = response.firstName;
+                putData.oldScore = response.goGreenScore;
+                currentUserData = {
+                  "currentScore": response.goGreenScore,
+                  "currentTotalVisits": response.totalVisits,
+                  "currentEBillVisits": response.eBillVisits
+                }
+                let displayName = `User: ${response.firstName} ${response.lastName}`;
+                let goGreenScoreDisplayText = `Go Green Score: ${response.goGreenScore}`;
+                let totalVisitsDisplayText = `Total Visits till date: ${response.totalVisits}`;
+                let visitsWithEBill = `Total eco-friendly visits: ${response.eBillVisits}`;
+                console.log("User information retrieved succesfully");
+                setTimeout(function () {
+                  $("#loading-div").addClass("d-none");
+                  $("#user-info-div" ).removeClass("d-none");
+                  $('#common-ngo-info').removeClass('d-none');
+                  $("#user-info-header").text(displayName);
+                  $("#user-info-details1").text(goGreenScoreDisplayText);
+                  $("#user-info-details2").text(totalVisitsDisplayText);
+                  $("#user-info-details3").text(visitsWithEBill);
+                }, 3000);
+              } else {
+                alert("Invalid QR Code, please try email option and proceed ahead");
+                location.reload();
               }
-              let displayName = `User: ${response.firstName} ${response.lastName}`;
-              let goGreenScoreDisplayText = `Go Green Score: ${response.goGreenScore}`;
-              let totalVisitsDisplayText = `Total Visits till date: ${response.totalVisits}`;
-              let visitsWithEBill = `Total eco-friendly visits: ${response.eBillVisits}`;
-              console.log("User information retrieved succesfully");
-              setTimeout(function () {
-                $("#loading-div").addClass("d-none");
-                $("#user-info-div" ).removeClass("d-none");
-                $('#common-ngo-info').removeClass('d-none');
-                $("#user-info-header").text(displayName);
-                $("#user-info-details1").text(goGreenScoreDisplayText);
-                $("#user-info-details2").text(totalVisitsDisplayText);
-                $("#user-info-details3").text(visitsWithEBill);
-              }, 3000);
             },
             error: function(xhr) {
               console.log("failed to get user information");
@@ -169,23 +175,32 @@ $(document).ready(function() {
       let totalVisits = currentUserData.currentTotalVisits + 1;
       let totalEBillVisits = currentUserData.currentTotalVisits;
       let paperBillVisits = totalVisits - totalEBillVisits;
-      let newScore = 50 + (Math.log(totalVisits) / Math.log(2)) + 3 * (Math.log(totalEBillVisits) / Math.log(2)) - (paperBillVisits/2);
+      let newScore = 50 + (Math.log(totalVisits) / Math.log(2)) + 3 * (Math.log(totalEBillVisits) / Math.log(2)) - 3 * (paperBillVisits/2);
       putData.newScore = Math.round(newScore * 100) / 100;
-      putData.eBill = true;
-      putData.updateUser = true;
+      putData.eBill = false;
+      console.log(putData);
       $('#checkout-info').addClass("d-none");
       $('#printing-bill-div').removeClass("d-none");
       $('#finish-paragraph-text-message-printing').text('Printing your receipt, please wait!');
 
-      setTimeout(function () {
-        $('#printing-bill-div').addClass("d-none");
-        $('#success-modal').removeClass('d-none');
-        $('#thank-you-message').text('Thank you for shopping with us.');
-      }, 2000);
+      $.ajax({
+        url: 'http://localhost:3000/updateUser',
+        data: putData,
+        type: 'POST',
+        success: function(response) {
+          if (response) {
+            setTimeout(function () {
+              $('#printing-bill-div').addClass("d-none");
+              $('#success-modal').removeClass('d-none');
+              $('#thank-you-message').text('Thank you for shopping with us.');
+            }, 2000);
 
-      setTimeout(function() {
-        location.reload();
-      }, 5500);
+            setTimeout(function() {
+              location.reload();
+            }, 5500);
+          }
+        }
+      });
     });
 
     $('#ngo-list').change(function(e) {
