@@ -276,6 +276,27 @@ $(document).ready(function() {
       $('#checkout-info').removeClass("d-none");
       $("#select-tab" ).addClass("disabled");
       $("#checkout-tab" ).removeClass("disabled");
+      if (currentUserData.currentTotalVisits === 0) {
+        // new user so score will not increase but can decrease
+        let totalVisits = currentUserData.currentTotalVisits + 1;
+        let eBillVisitsGoingNotGreen = currentUserData.currentEBillVisits;
+        let paperBillVisitsGoingNotGreen = totalVisits - eBillVisitsGoingNotGreen;
+        let newScoreNotGoingGreen = 50 + (Math.log(totalVisits) / Math.log(2)) - 3 * (paperBillVisitsGoingNotGreen/2);
+        $('#current-score-display').text(`Your Current Go Green score is: ${currentUserData.currentScore}`);
+        $('#non-green-affects-text').text(`Selecting a printed copy will decrease your Go Green score to: ${newScoreNotGoingGreen}`);
+
+      } else {
+        let totalVisits = currentUserData.currentTotalVisits + 1;
+        let eBillVisitsGoingGreen = currentUserData.currentEBillVisits + 1
+        let eBillVisitsGoingNotGreen = currentUserData.currentEBillVisits;
+        let paperBillVisitsGoingGreen = totalVisits - eBillVisitsGoingGreen;
+        let paperBillVisitsGoingNotGreen = totalVisits - eBillVisitsGoingNotGreen;
+        $('#current-score-display').text(`Your Current Go Green score is: ${currentUserData.currentScore}`);
+        let newScoreGoingGreen = 50 + (Math.log(totalVisits) / Math.log(2)) + 3 * (Math.log(eBillVisitsGoingGreen) / Math.log(2)) - 3 * (paperBillVisitsGoingGreen/2);
+        let newScoreNotGoingGreen = 50 + (Math.log(totalVisits) / Math.log(2)) + 3 * (Math.log(eBillVisitsGoingNotGreen) / Math.log(2)) - 3 * (paperBillVisitsGoingNotGreen/2);
+        $('#go-green-benefit-text').text(`Selecting an e-copy will increase your Go Green score to: ${newScoreGoingGreen}`);
+        $('#non-green-affects-text').text(`Selecting a printed copy will decrease your Go Green score to: ${newScoreNotGoingGreen}`);
+      }
       $('#checkout-tab a[href="#checkout"]').tab('show');
       $('#checkout-tab').click();
     });
