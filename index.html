@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Save Humanity">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 	<link rel="stylesheet" href="master.css">
 	<style type="text/css">
 		.center-block {
@@ -68,14 +69,92 @@
 										</li>
 									</ul>
 								</div>
+
+								<div class="card d-none" id="email-div">
+									<div class="card-body">
+										<form>
+  										<div class="form-group">
+    									  <label for="exampleInputEmail1">Email address</label>
+    										<input required type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+  										</div>
+  									<button id="email-submit" type="submit" class="btn btn-primary">Continue</button>
+									</form>
+									</div>
+								</div>
 							</div>
 						</div>
 						<span id="error" style='color:darkred;' class="center"></span>
 					</div>
 					<div class="tab-pane fade" id="select" role="tabpanel" aria-labelledby="select-tab">
-						<h1>Orange</h1>
-						<p>orange orange orange orange orange</p>
-						<button>Blue</button>
+						<div class="row justify-content-center" id="select-scan-div">
+							<div class="col-sm-6">
+								<div class="card" id="loading-div">
+									<div class="card-body">
+										<p align="center"> Retrieving Your Go Green Score <p>
+						  			<div class="loader"></div>
+					  			</div>
+								</div>
+
+								<div class="card d-none" id="user-info-div">
+									<div class="card text-white bg-info">
+  								  <div class="card-header" id="user-info-header"></div>
+  										<div class="card-body">
+    										<p class="card-text" id="user-info-details1"></p>
+												<p class="card-text" id="user-info-details2"></p>
+												<p class="card-text" id="user-info-details3"></p>
+												<p class="card-text"> Total Bill: $5.20 </p>
+												<div class="row">
+													<div class="col-xs-3">
+														<button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="You are a super Hero saving mother earth!">
+															<i class="fa fa-envelope"></i>Email Receipt
+														</button>
+													</div>
+													<div class="col-xs-3">
+														<button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Printed">
+															<i class="fa fa-print"></i>Print Receipt
+														</button>
+													</div>
+												</div>
+  										</div>
+									</div>
+					  		</div>
+								</div>
+							</div>
+
+							<div class="row justify-content-center d-none" id="select-email-div">
+								<div class="col-sm-6">
+									<div class="card" id="email-loading-div">
+										<div class="card-body">
+											<p align="center">Looking for user account!<p>
+											<div class="loader"></div>
+										</div>
+									</div>
+
+									<div class="card d-none" id="user-email-entered-info-div">
+										<div class="card text-white bg-info">
+											<div class="card-header" id="user-info-header">Seems like you are not signed up with us! </div>
+												<div class="card-body">
+													<p class="card-text" id="user-info-details">For new members, we auto assign a Go Green score of 50</p>
+													<p class="card-text"> Total Bill: $7.35</p>
+													<div class="row">
+														<div class="col-xs-3">
+															<button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="You are a super Hero saving mother earth!">
+																<i class="fa fa-envelope"></i>Email Receipt
+															</button>
+														</div>
+														<div class="col-xs-3">
+															<button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Printed">
+																<i class="fa fa-print"></i>Print Receipt
+															</button>
+														</div>
+													</div>
+												</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="checkout" role="tabpanel" aria-labelledby="checkout-tab">
 						<h1>Yellow</h1>
