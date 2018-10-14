@@ -87,7 +87,7 @@
 					</div>
 					<div class="tab-pane fade" id="select" role="tabpanel" aria-labelledby="select-tab">
 						<div class="row justify-content-center" id="select-scan-div">
-							<div class="col-sm-6">
+							<div class="col-sm-8">
 								<div class="card" id="loading-div">
 									<div class="card-body">
 										<p align="center"> Retrieving Your Go Green Score <p>
@@ -103,18 +103,6 @@
 												<p class="card-text" id="user-info-details2"></p>
 												<p class="card-text" id="user-info-details3"></p>
 												<p class="card-text"> Total Bill: $5.20 </p>
-												<div class="row">
-													<div class="col-xs-3">
-														<button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="You are a super Hero saving mother earth!">
-															<i class="fa fa-envelope"></i>Email Receipt
-														</button>
-													</div>
-													<div class="col-xs-3">
-														<button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Printed">
-															<i class="fa fa-print"></i>Print Receipt
-														</button>
-													</div>
-												</div>
   										</div>
 									</div>
 					  		</div>
@@ -122,7 +110,7 @@
 							</div>
 
 							<div class="row justify-content-center d-none" id="select-email-div">
-								<div class="col-sm-6">
+								<div class="col-sm-8">
 									<div class="card" id="email-loading-div">
 										<div class="card-body">
 											<p align="center">Looking for user account!<p>
@@ -135,31 +123,131 @@
 											<div class="card-header" id="user-info-header">Seems like you are not signed up with us! </div>
 												<div class="card-body">
 													<p class="card-text" id="user-info-details">For new members, we auto assign a Go Green score of 50</p>
-													<p class="card-text"> Total Bill: $7.35</p>
-													<div class="row">
-														<div class="col-xs-3">
-															<button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="You are a super Hero saving mother earth!">
-																<i class="fa fa-envelope"></i>Email Receipt
-															</button>
-														</div>
-														<div class="col-xs-3">
-															<button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Printed">
-																<i class="fa fa-print"></i>Print Receipt
-															</button>
-														</div>
-													</div>
+													<p class="card-text"> Total Bill: $5.20</p>
 												</div>
 										</div>
 									</div>
 
 								</div>
 							</div>
+							<div class="card d-none" id="common-ngo-info">
+								<div class="card text-white bg-info">
+									<div class="card-body">
+										<div>
+											<blockquote class="quote-card yellow-card">
+												<p>
+													Giving is not just about making a donation, it's about making a difference
+												</p>
+
+												<cite>
+													Kathy Calvin
+												</cite>
+											</blockquote>
+										</div>
+
+										<p class="card-text"><strong>We will round up your total bill to the nearest dollar and will donate that to the charity of your choice!</srong></p>
+
+										<select id="ngo-list" class="form-control">
+											<option value="" disabled selected>Choose category for NGO</option>
+											<option value="one">Education</option>
+											<option value="two">Environment</option>
+											<option value="three">Health</option>
+											<option value="four">Orphanage</option>
+										</select>
+										<br>
+										<div id="ngo-checkbox-list" class="d-none">
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input" id="materialUnchecked">
+												<label style="background-color:#ffffa0" class="form-check-label" for="ngo0"><a id="ngo0" href="" target="_blank" style="background-color:#ffffa0"></a></label>
+											</div>
+
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input" id="materialUnchecked">
+												<label class="form-check-label" for="ngo1"><a id="ngo1" href="" target="_blank" style="background-color:#ffffa0"></a></label>
+											</div>
+
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input" id="materialUnchecked">
+												<label class="form-check-label" for="ngo2"><a id="ngo2" href="" target="_blank" style="background-color:#ffffa0"></a></label>
+											</div>
+
+											<div class="form-check">
+												<input type="checkbox" class="form-check-input" id="materialUnchecked">
+												<label class="form-check-label" for="ngo3"><a id="ngo3" href="" target="_blank" style="background-color:#ffffa0"></a></label>
+											</div>
+									</div>
+									<br>
+
+									<div class="row" id="user-donate-selection">
+										<div class="col-xs-3">
+											<button id="donate-and-proceed" class="btn btn-primary">
+												<i class="fa fa-donate"></i>Donate & Proceed
+											</button>
+										</div>
+										<div class="col-xs-3">
+											<button id="skip-and-proceed" class="btn btn-primary">
+												<i class="fa fa-fast-forward"></i>Skip & Proceed
+											</button>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</div>
 					<div class="tab-pane fade" id="checkout" role="tabpanel" aria-labelledby="checkout-tab">
-						<h1>Yellow</h1>
-						<p>yellow yellow yellow yellow yellow</p>
-						<button>Blue</button>
+						<div class="card d-none" id="checkout-info">
+							<div class="card text-white bg-info">
+								<div class="card-header" id="checkout-summary">Summary</div>
+									<div class="card-body">
+										<p class="card-text" id="">Items Purchased: $5.20</p>
+										<p class="card-text" id="donation-amount-display"></p>
+										<p class="card-text" id="current-score-display"></p>
+										<p class="card-text" id="go-green-benefit-text"></p>
+										<p class="card-text" id="non-green-affects-text"></p>
+										<p class="card-text" id=""></p>
+										<div class="row">
+											<div class="col-xs-3">
+												<button id="email-receipt-button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="You are a super Hero saving mother earth!">
+													<i class="fa fa-envelope"></i>Email Receipt
+												</button>
+											</div>
+											<div class="col-xs-3">
+												<button id="print-receipt-button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Printed">
+													<i class="fa fa-print"></i>Print Receipt
+												</button>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+
+						<div class="row justify-content-center d-none" id="sending-email-div">
+							<div class="col-sm-8">
+								<div class="card" id="loading-div">
+									<div class="card-body">
+										<p id="finish-paragraph-text-message" align="center"><p>
+										<div class="loader"></div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+							<div class="row justify-content-center d-none" id="printing-bill-div">
+								<div class="col-sm-8">
+									<div class="card" id="loading-div">
+										<div class="card-body">
+											<p id="finish-paragraph-text-message-printing" align="center"><p>
+											<div class="loader"></div>
+										</div>
+									</div>
+									</div>
+								</div>
+
+							<div class="alert alert-success d-none" id="success-modal">
+  							<strong>Success!</strong><p id="thank-you-message"></p>
+							</div>
 					</div>
 				</div>
 			</div>
