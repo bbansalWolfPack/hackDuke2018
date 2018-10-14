@@ -12,6 +12,9 @@ var currentUserData = {
 var donationAmount=0;
 
 $(document).ready(function() {
+  $.ajax({
+    cache: false,
+  });
     $("#scan-qr-button").click(function() {
         $("#scanner-div").removeClass("d-none");
         $("#home-page-options").addClass("d-none");
