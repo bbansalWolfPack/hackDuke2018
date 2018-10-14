@@ -89,9 +89,11 @@ $(document).ready(function() {
         $('#select-tab a[href="#select"]').tab('show');
         $('#select-tab').click();
         putData.userEmail = givenEmail;
+        let URL = "https://hackduke2018serverbackup.appspot.com/userDetails"
+        console.log(URL);
 
         $.ajax({
-          url: "https://hackduke2018serverbackup.appspot.com/userDetails",
+          url: URL,
           type: "get",
           data: {
             userEmail: givenEmail
